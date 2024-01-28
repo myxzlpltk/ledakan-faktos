@@ -1,5 +1,6 @@
 "use client";
 
+import { successToastEN, successToastID } from "@/lib/template";
 import {
 	ActionIcon,
 	Box,
@@ -14,51 +15,18 @@ import {
 	Switch,
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
+import { GB, ID } from "country-flag-icons/react/3x2";
 import { useState } from "react";
 import { FiClipboard } from "react-icons/fi";
 import { Toaster, toast } from "sonner";
 
-const successToastID = [
-	"Tercopy abangkuuuhh 🔥🔥",
-	"Sudah tercopy abangda 🤝🏼",
-	"Tersalin, top kapten 👍🏼👍🏼",
-	"Berhasil tercopy 🙌🏼🙌🏼",
-	"Tercopy, top abangkuu 🔥🔥💯🔝",
-	"Kelas abangda 🔥🫡",
-];
+const renderIndonesianFlag = <ID title="Indonesia" width={18} height={12} />;
 
-const successToastEN = [
-	"Copied my brother 🔥🔥",
-	"It's been copied, brother 🤝🏼",
-	"Copied, top captain 👍🏼👍🏼",
-	"Successfully copied 🙌🏼🙌🏼",
-	"Copied, courtesy of my brother 🔥🔥💯🔝",
-	"Brother class 🔥🫡",
-];
-
-const renderIndonesianFlag = (
-	<div
-		style={{
-			fontSize: "1rem",
-		}}
-	>
-		🇮🇩
-	</div>
-);
-
-const renderBritishFlag = (
-	<div
-		style={{
-			fontSize: "1rem",
-		}}
-	>
-		🇬🇧
-	</div>
-);
+const renderBritishFlag = <GB title="English" width={18} height={12} />;
 
 type TPageClientProps = {
-	templatesID: string[];
-	templatesEN: string[];
+	templatesID: [string, string][];
+	templatesEN: [string, string][];
 };
 
 export default function PageClient({
@@ -68,17 +36,21 @@ export default function PageClient({
 	const clipboard = useClipboard({ timeout: 500 });
 	const [checked, setChecked] = useState<"ID" | "EN">("ID");
 	const isIndonesian = checked === "ID";
+	const templates = isIndonesian ? templatesID : templatesEN;
 
-	const templates = () => {
-		const template = isIndonesian ? templatesID : templatesEN;
-		return template;
+	const toOneLiner = (text1: string, text2: string): string => {
+		if (text1.endsWith("?")) {
+			return `${text1} ${text2}.`;
+		}
+
+		return `${text1}. ${text2}.`;
 	};
 
 	const copied = () => {
 		const successToast = isIndonesian ? successToastID : successToastEN;
-		toast.success(
-			successToast[Math.floor(Math.random() * successToast.length)],
-		);
+		const index = Math.floor(Math.random() * successToast.length);
+		toast.dismiss();
+		toast.success(successToast[index]);
 	};
 
 	return (
@@ -90,7 +62,7 @@ export default function PageClient({
 					textAlign: "center",
 				}}
 			>
-				Salin Abangkuuuhh 🫡🔥🔝
+				{isIndonesian ? "Ledakan Faktos 💥💔🥲" : "Factos Explosion 💥💔🥲"}
 			</Title>
 
 			<Flex
@@ -107,7 +79,7 @@ export default function PageClient({
 						textAlign: "center",
 					}}
 				>
-					Pilih Bahasa Template 🌾🙌🏼🙇‍♂️
+					{isIndonesian ? "Pilih Bahasa Template 🌾🙌🏼🙇‍♂️" : "Choose Template"}
 				</Title>
 				<Switch
 					checked={isIndonesian}
@@ -121,15 +93,15 @@ export default function PageClient({
 			</Flex>
 
 			<Stack pt="lg">
-				{templates().map((i) => (
+				{templates.map(([text1, text2], index) => (
 					<Paper
-						key={i}
+						key={`${index.toString()}-item-${isIndonesian ? "ID" : "EN"}`}
 						shadow="xs"
 						radius="md"
 						px="md"
 						py="md"
 						onClick={() => {
-							clipboard.copy(i);
+							clipboard.copy(toOneLiner(text1, text2));
 							copied();
 						}}
 						color="gray"
@@ -137,9 +109,12 @@ export default function PageClient({
 							cursor: "pointer",
 						}}
 					>
-						<Flex justify="space-between">
-							<Text>{i}</Text>
-
+						<Flex justify="space-between" align="center">
+							<Text>
+								<span>{text1}</span>
+								<br />
+								<span>{text2}</span>
+							</Text>
 							<Tooltip label="Salin">
 								<ActionIcon
 									variant="default"
@@ -167,13 +142,17 @@ export default function PageClient({
 			>
 				<Button
 					onClick={() => {
-						clipboard.copy(templates().join("\n"));
+						clipboard.copy(
+							templates
+								.map(([text1, text2]) => toOneLiner(text1, text2))
+								.join("\n"),
+						);
 						copied();
 					}}
 					radius="md"
 					color="teal.9"
 				>
-					Salin Semua 🤙🏻
+					{isIndonesian ? "Salin Semua 🤙🏻" : "Copy All 🤙🏻"}
 				</Button>
 			</Box>
 		</Container>

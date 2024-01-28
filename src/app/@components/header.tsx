@@ -1,11 +1,9 @@
 "use client";
 
-import { Menu, Group, Center, Burger, Container, Title } from "@mantine/core";
+import { Burger, Container, Group, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { MantineLogo } from "@mantinex/mantine-logo";
-import classes from "./header.module.css";
-import { BiChevronDown } from "react-icons/bi";
 import Link from "next/link";
+import classes from "./header.module.css";
 
 const links = [
 	{ link: "/about", label: "Features" },

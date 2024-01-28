@@ -8,13 +8,14 @@
     "start": "next start",
     "lint": "next lint",
     "sort": "bun run src/lib/sort.ts",
-    "format":"pnpm dlx @biomejs/biome format --write ./src",
-    "lint:":"biome check --apply ./src"
+    "format": "pnpm dlx @biomejs/biome format --write ./src",
+    "lint:": "biome check --apply ./src"
   },
   "dependencies": {
     "@mantine/core": "^7.4.2",
     "@mantine/hooks": "^7.4.2",
     "@mantinex/mantine-logo": "^1.0.1",
+    "country-flag-icons": "^1.5.9",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",

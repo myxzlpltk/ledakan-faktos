@@ -1,17 +1,20 @@
-import { templates } from "@/lib/template";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-static"; // defaults to auto
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+	// Get the host name from the request headers
+	const url = new URL(request.url);
+	const host = url.origin;
+
 	return NextResponse.json({
 		one: {
-			id: "https://salin-abangku.vercel.app/api/one",
-			en: "https://salin-abangku.vercel.app/api/one?lang=en",
+			id: `${host}/api/one`,
+			en: `${host}/api/one?lang=en`,
 		},
 		all: {
-			id: "https://salin-abangku.vercel.app/api/all",
-			en: "https://salin-abangku.vercel.app/api/all?lang=en",
+			id: `${host}/api/all`,
+			en: `${host}/api/all?lang=en`,
 		},
 	});
 }
