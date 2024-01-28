@@ -1,4 +1,4 @@
-# Salin Abangkuuuhh 🫡🔥🔝
+# Ledakan Faktos 💥💔🥲
 
 > Mau nambahin list? Langsung bikin PR boskuuuhh 🤙🏻🤙🏻🤙🏻
 >
@@ -12,9 +12,9 @@ List kata-kata ada di [template.ts](./src/lib/template.ts) boskuh 🤙🏻🤙�
 
 ### One
 
-- **Indonesia**: <https://salin-abangku.vercel.app/api/one>
+- **Indonesia**: <https://ledakan-faktos.vercel.app/api/one>
 
-- **Inggris**: <https://salin-abangku.vercel.app/api/one?lang=en>
+- **Inggris**: <https://ledakan-faktos.vercel.app/api/one?lang=en>
 
 **Response**
 
@@ -24,9 +24,9 @@ List kata-kata ada di [template.ts](./src/lib/template.ts) boskuh 🤙🏻🤙�
 
 ### All
 
-- Indonesia: <https://salin-abangku.vercel.app/api/all>
+- Indonesia: <https://ledakan-faktos.vercel.app/api/all>
 
-- Inggris: <https://salin-abangku.vercel.app/api/all?lang=en>
+- Inggris: <https://ledakan-faktos.vercel.app/api/all?lang=en>
 
 **Response**
 

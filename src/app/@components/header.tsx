@@ -51,7 +51,7 @@ export function Header() {
 							textAlign: "center",
 						}}
 					>
-						Salin Abangkuuuhh 🫡🔥🔝
+						Ledakan Faktos 💥💔🥲
 					</Title>
 					<Group gap={5} visibleFrom="sm">
 						{items}
