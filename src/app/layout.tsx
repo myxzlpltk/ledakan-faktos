@@ -5,8 +5,8 @@ import "@mantine/core/styles.css";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 export const metadata = {
-	title: "Salin Abangkuuuhh 🫡🔥🔝",
-	description: "Sikat abangkuuhh 🤝🏼",
+	title: "Ledakan Faktos 💥💔🥲",
+	description: "Tetap sadboy dengan Ledakan Faktos 💥💔🥲",
 };
 
 export default function RootLayout({
